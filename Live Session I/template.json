@@ -1,0 +1,23 @@
+{
+    "variables": {
+      "region": "us-west-1",
+      "instance_type": "t2.micro"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "region": "{{user `region`}}",
+        "instance_type": "{{user `instance_type`}}",
+        "source_ami": "ami-0c55b159cbfafe1f0",
+        "ssh_username": "ubuntu",
+        "ami_name": "packer-example {{timestamp}}"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "scripts/install.sh"
+      }
+    ]
+  }
+  
